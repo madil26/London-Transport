@@ -1,0 +1,27 @@
+﻿p {
+    color:black;
+}
+
+.time-band-ls {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+    .time-band-ls li {
+        justify-content: space-evenly;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background: grey;
+        color: darkblue;
+        margin: 0;
+        padding: 0;
+        outline: 3px solid black;
+    }
+
+.time-band-ls li h4 {
+        font-size: 15px;
+        color: ghostwhite;
+}

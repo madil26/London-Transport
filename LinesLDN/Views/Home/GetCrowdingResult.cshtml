@@ -1,0 +1,58 @@
+﻿@model LinesLDN.Models.CrowdingModel
+@{
+    ViewData["Title"] = "GetCrowdingResult";
+}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/CrowdingResult.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <p>Station Id: @Model.naptan</p>
+        <p>Day of Week: @Model.dayOfWeek</p>
+        <p>Morning Rush Peak: @Model.amPeakTimeBand</p>
+        <p>Evening Rush Peak: @Model.pmPeakTimeBand</p>
+        @*
+        <p>Time Bands</p>
+        <ul class="time-band-ls">
+            @foreach (var timeBand in Model.timeBands)
+            {
+                <li>
+                    <h4 class="time-band">Time Band: @timeBand.timeBand</h4>
+                    <h4 class="percentage-base">Percentage of Base Line: @timeBand.percentageOfBaseLine</h4>
+                </li>
+            }
+        </ul>
+        *@
+    </div>
+    <div>
+        <canvas id="myChart" width="200" height="50"></canvas>
+    </div>
+
+    <script>
+        const labels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.timeBands.Select(tb => tb.timeBand)));
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Crowding Rush /24hours',
+                data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.timeBands.Select(tb => tb.percentageOfBaseLine))),
+                fill: false,
+                tension: 0.2
+            }]
+        };
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: data
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+

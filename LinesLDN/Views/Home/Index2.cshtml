@@ -1,0 +1,40 @@
+﻿@model StationStopPoints
+
+<div>
+    
+    <form asp-controller="Home" asp-action="GetCrowdingResult" method="post">
+    <label for="stationsDropdown">Select a Station:</label>
+    <select name="station">
+            @foreach (var station in Model.stopPoints.Select(s => s).DistinctBy(s => s.commonName).OrderBy(s => s.commonName))
+        {
+            <option value="@station.naptanId">@station.commonName</option>
+        }
+    </select>
+
+    <label for="dayOfWeekDropdown">Select a Day:</label>
+    <select name="dayOfWeek">
+        <option value="MON">Monday</option>
+        <option value="TUE">Tuesday</option>
+        <option value="WED">Wednesday</option>
+        <option value="THU">Thursday</option>
+        <option value="FRI">Friday</option>
+        <option value="SAT">Saturday</option>
+        <option value="SUN">Sunday</option>
+    </select>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
