@@ -1,21 +1,29 @@
 ﻿@model LiveCrowding
 
 <div>
-
+	<link rel="stylesheet" type="text/css" href="/css/site.css" />
 	<h1>Live Crowding Data</h1>
-	<p4 style="color: green;">Not Busy:  0 - 10</p4>
-	<p4 style="color: grey;">Some Crowding:  11 - 60</p4>
-	<p4 style="color: red;">Very Busy:  61 - 100</p4>
+	<div class="legend">
+		<p4 style="color: green;">Minimal Crowding:  0 - 33</p4>
+		<p4 style="color: grey;">Moderate Crowding:  34 - 66</p4>
+		<p4 style="color: red;">Heavy Crowding:  67 - 100</p4>
+	</div>
+	
 
 
 	<h5>Current Crowding:</h5>
-	@if(@Model.percentageOfBaseLine < 0.01)
+	@if(@Model.percentageOfBaseLine <= 0.33)
 	{
-		<p style="color: green;">Not Busy - @Model.percentageOfBaseLine.ToString("n4")</p>
+		<p style="color: green;">Minimal Crowding - @Model.percentageOfBaseLine.ToString("n4")</p>
 	}
-	else if (@Model.percentageOfBaseLine > 0.01)
+	else if (@Model.percentageOfBaseLine > 0.33 && @Model.percentageOfBaseLine <=.66)
 	{
-		<p>Busy</p>
+		<p style="color: grey;">Moderate Crowding - @Model.percentageOfBaseLine.ToString("n4")</p>
+	}
+
+	else if (@Model.percentageOfBaseLine > 0.66)
+	{
+		<p style="color: red;">Heavy Crowding</p>
 	}
 
 </div>

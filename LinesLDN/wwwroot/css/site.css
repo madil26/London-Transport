@@ -16,3 +16,16 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.legend {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 20%;
+    height: auto;
+    outline: 2px solid grey;
+}
+
+p {
+    padding:5px;
+}
