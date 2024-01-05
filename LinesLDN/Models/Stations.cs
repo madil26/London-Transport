@@ -9,5 +9,9 @@ namespace LinesLDN.Models
 
 		[JsonProperty("commonName")]
 		public string commonName { get; set; }
+
+        [JsonProperty("stopType")]
+        public string stopType { get; set; }
     }
+
 }

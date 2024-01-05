@@ -1,0 +1,21 @@
+﻿@model LiveCrowding
+
+<div>
+
+	<h1>Live Crowding Data</h1>
+	<p4 style="color: green;">Not Busy:  0 - 10</p4>
+	<p4 style="color: grey;">Some Crowding:  11 - 60</p4>
+	<p4 style="color: red;">Very Busy:  61 - 100</p4>
+
+
+	<h5>Current Crowding:</h5>
+	@if(@Model.percentageOfBaseLine < 0.01)
+	{
+		<p style="color: green;">Not Busy - @Model.percentageOfBaseLine.ToString("n4")</p>
+	}
+	else if (@Model.percentageOfBaseLine > 0.01)
+	{
+		<p>Busy</p>
+	}
+
+</div>

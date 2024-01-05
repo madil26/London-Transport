@@ -13,23 +13,15 @@
         <p>Day of Week: @Model.dayOfWeek</p>
         <p>Morning Rush Peak: @Model.amPeakTimeBand</p>
         <p>Evening Rush Peak: @Model.pmPeakTimeBand</p>
-        @*
-        <p>Time Bands</p>
-        <ul class="time-band-ls">
-            @foreach (var timeBand in Model.timeBands)
-            {
-                <li>
-                    <h4 class="time-band">Time Band: @timeBand.timeBand</h4>
-                    <h4 class="percentage-base">Percentage of Base Line: @timeBand.percentageOfBaseLine</h4>
-                </li>
-            }
-        </ul>
-        *@
+    <form>
+            <input type="hidden" name="station" value="@Model.naptan" />
+            <button asp-controller="LiveCrowding" asp-action="LiveCrowding" method="post" type="submit">Live Station Data</button>
+    </form>
+
     </div>
     <div>
         <canvas id="myChart" width="200" height="50"></canvas>
     </div>
-
     <script>
         const labels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.timeBands.Select(tb => tb.timeBand)));
         const data = {

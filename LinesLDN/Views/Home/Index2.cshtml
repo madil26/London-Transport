@@ -1,16 +1,15 @@
-﻿@model StationStopPoints
+﻿@model List<Stations>
 
 <div>
     
     <form asp-controller="Home" asp-action="GetCrowdingResult" method="post">
-    <label for="stationsDropdown">Select a Station:</label>
-    <select name="station">
-            @foreach (var station in Model.stopPoints.Select(s => s).DistinctBy(s => s.commonName).OrderBy(s => s.commonName))
-        {
-            <option value="@station.naptanId">@station.commonName</option>
-        }
-    </select>
-
+        <label for="stationsDropdown">Select a Station:</label>
+        <select name="station">
+            @foreach (var station in Model)
+            {
+                <option value="@station.naptanId">@station.commonName</option>
+            }
+        </select>    
     <label for="dayOfWeekDropdown">Select a Day:</label>
     <select name="dayOfWeek">
         <option value="MON">Monday</option>

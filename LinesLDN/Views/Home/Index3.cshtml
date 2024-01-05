@@ -1,0 +1,12 @@
+﻿@model List<LinesLDN.Models.Lines>
+
+<div>
+    <label for="stationsDropdown">Select a Station:</label>
+    <select name="station" id="stationsDropdown">
+        @foreach (var line in Model)
+        {
+            <option value="@line.Id">@line.Name</option>
+        }
+    </select>
+</div>
+
