@@ -43,7 +43,7 @@ namespace LinesLDN.Controllers
 
             ViewData.Model = liveCrowding;
 
-            return View();
+            return PartialView("_LiveCrowding",liveCrowding);
         }
     }
 }

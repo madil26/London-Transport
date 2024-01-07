@@ -1,7 +1,8 @@
 ﻿@model List<Stations>
 
 <div>
-    
+    <link rel="stylesheet" type="text/css" href="/css/site.css" />
+    <h4>London Stations Crowding Search</h4>
     <form asp-controller="Home" asp-action="GetCrowdingResult" method="post">
         <label for="stationsDropdown">Select a Station:</label>
         <select name="station">
@@ -20,12 +21,33 @@
         <option value="SAT">Saturday</option>
         <option value="SUN">Sunday</option>
     </select>
-
     <button type="submit">Submit</button>
-
 </form>
 
+    <form id="line-status-form" asp-controller="Home" asp-action="LineStatusInfo" method="post">
+        <div class="line-info">
+            <h4>London Lines Status Search</h4>
+            <span>
+                <button id="load-line-status-button" type="submit">Line Status</button>
+            </span>
+        </div>
+    </form>
 
+    <div class="loaded-line-status"></div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function loadLineStatus() {
+            var url = "/Home/LineStatusInfo";
+            $('.loaded-line-status').load(url);
+        }
+        $('#load-line-status-button').on('click', function () {
+            loadLineStatus();
+        });
+
+        $('#line-status-form').submit(function (e) {
+            e.preventDefault();
+        });
+    </script>
 
 </div>
 

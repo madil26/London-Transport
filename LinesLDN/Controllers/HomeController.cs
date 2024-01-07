@@ -61,7 +61,7 @@ namespace LinesLDN.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Index3()
+        public async Task<IActionResult> LineStatusInfo()
         {
             List<Lines> lines = new List<Lines>();
             var client = new HttpClient();
@@ -86,7 +86,7 @@ namespace LinesLDN.Controllers
 
             ViewData.Model = lines;
 
-            return View();
+            return PartialView("_LineStatusInfo");
         }
 
         [HttpPost]

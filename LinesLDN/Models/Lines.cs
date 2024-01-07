@@ -28,6 +28,9 @@ namespace LinesLDN.Models
 
         [JsonProperty("statusSeverityDescription")]
         public string StatusSeverityDescription { get; set; }
+
+        [JsonProperty("reason")]
+        public string reason { get; set; }
     }
 }
 

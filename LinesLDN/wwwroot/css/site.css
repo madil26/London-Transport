@@ -29,3 +29,28 @@ body {
 p {
     padding:5px;
 }
+
+.line-container {
+    display:flex;
+    flex-direction:column;
+    list-style:none;
+}
+
+
+.single-line {
+    display: flex;
+    flex-direction: row;
+}
+
+li.single-line h4{
+    margin:0;
+}
+
+.line-name {
+    background-color:aliceblue;
+    width:20%;
+}
+
+.line-info {
+    margin-top:5%;
+}

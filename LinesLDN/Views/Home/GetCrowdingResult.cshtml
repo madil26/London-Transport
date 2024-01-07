@@ -8,20 +8,24 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div id="live-crowding-container"></div>
+
     <div>
         <p>Station Id: @Model.naptan</p>
         <p>Day of Week: @Model.dayOfWeek</p>
         <p>Morning Rush Peak: @Model.amPeakTimeBand</p>
         <p>Evening Rush Peak: @Model.pmPeakTimeBand</p>
-    <form>
+        <form id="live-crowding-form">
             <input type="hidden" name="station" value="@Model.naptan" />
-            <button asp-controller="LiveCrowding" asp-action="LiveCrowding" method="post" type="submit">Live Station Data</button>
-    </form>
+            <button id="load-live-crowding-button" type="button">Live Station Data</button>
+        </form>
+
 
     </div>
     <div>
         <canvas id="myChart" width="200" height="50"></canvas>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         const labels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.timeBands.Select(tb => tb.timeBand)));
         const data = {
@@ -40,6 +44,23 @@
             data: data
         });
     </script>
+    <script>
+        function loadLiveCrowding() {
+            var stationValue = "@Model.naptan";
+            var url = "/LiveCrowding/LiveCrowding?station="+stationValue;
+            $('#live-crowding-container').load(url);
+        }
+
+        $('#load-live-crowding-button').on('click', function () {
+            loadLiveCrowding();
+        });
+
+        $('#live-crowding-form').submit(function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+
 
 </body>
 </html>

@@ -1,0 +1,27 @@
+﻿@model List<LinesLDN.Models.Lines>
+
+<div>
+    <link rel="stylesheet" href="/css/site.css">
+    <ul class="line-container">
+        @foreach (var line in Model)
+        {
+            <li class="single-line">
+                <h4 class="line-name" id="@line.Id">@line.Name</h4>
+            <h4 class="line-status">
+                @foreach (var status in line.LineStatuses)
+                {
+                    <span class="line-severity-desc">
+                        <span  id="@status.Id">@status.StatusSeverity</span>
+                        <span class="line-severity-desc-expand">
+                                <span id="@status.Id">@status.StatusSeverityDescription</span>
+                                <span id="@status.Id">@status.reason</span>
+                        </span>
+                    </span>
+                }
+            </h4>
+            </li>
+        }
+    </ul>
+</div>
+
+
